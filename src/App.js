@@ -26,23 +26,20 @@ class App extends Component {
     const self = this;
     console.log(self);
     const data =
-  `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0, 0, 200, 200' width='200' height='200'>
-      <foreignObject width='100%' height='100%'>
-          <div xmlns="http://www.w3.org/1999/xhtml">
-            <style>
-              .wrapper {
-                  width: 100%;
-                  height: 100vh;
-                  font-kerning: normal;
-                  font-feature-settings: "palt";
-                  -webkit-font-feature-settings: "palt";
-                  font-weight: 900;
-              }
-            </style>
-            <h1>${e.target}/h1>
-        </div>
-      </foreignObject>
-    </svg>`;
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 1280" width="960" height="1280">
+  <style>
+    h1 {
+      color: red;
+    }
+  </style>
+  <g>
+    <foreignObject x="0" y="0" width="100%" height="100%">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <h1>Hello, world!</h1>
+      </div>
+    </foreignObject>
+  </g>
+</svg>`;
 
     const svg = new Blob([data], {
         type: 'image/svg+xml'
@@ -58,8 +55,8 @@ class App extends Component {
     img.src = url;
 
     img.onload = () => {
-      self.document.getElementById('canvas').getContext('2d').drawImage(img, 0, 0, 200, 200);
-      DOMURL.revokeObjectURL(url);
+      // self.document.getElementById('canvas').getContext('2d').drawImage(img, 0, 0, 200, 200);
+      // DOMURL.revokeObjectURL(url);
     }
   }
 
