@@ -1,16 +1,10 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
-class App extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      plainText: ''
-    }
-    this.doChange = this.doChange.bind(this);
-  }
+function App() {
+  const [text, setText] = useState('');
 
-  componentDidUpdate() {
+  useEffect(() => {
     // 原稿用紙のフォーマット
     const column = 20;
     const textWidth = 12;
@@ -20,7 +14,7 @@ class App extends Component {
     const textPosY = 44;
 
     // 改行や、一行あたりの文字数制限の対応
-    const textbox = this.state.plainText;
+    const textbox = text;
     const textlist = textbox.split('\n');
     let tempArray = [];
     let newtextlist = [];
@@ -37,7 +31,7 @@ class App extends Component {
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, 600, 400);
-    
+
     // 一行ごとに画像を出力する
     newtextlist.forEach(function(el, i){
       const data =
@@ -88,16 +82,10 @@ class App extends Component {
         DOMURL.revokeObjectURL(url);
       }
     });
-  }
+  });
 
-  doChange(e){
-    this.setState({
-      plainText: e.target.value
-    });
-  }
-
-  render(){
-    return <div className="wrapper">
+  return (
+    <div className="wrapper">
       <div className="wrapper__inner">
         <h1 className="heading">Paper</h1>
         <div className="box">
@@ -106,11 +94,11 @@ class App extends Component {
               <canvas id="canvas" width="600" height="460" />
             </div>
           </div>
-          <textarea className="textarea" placeholder="入力すると上に文字が出てきますよ" onChange={this.doChange} value={this.state.plainText}></textarea>
+          <textarea className="textarea" placeholder="入力すると上に文字が出てきますよ" onChange={e => setText(e.target.value)} value={text}></textarea>
         </div>
       </div>
-    </div>;
-  }
+    </div>
+  );
 }
 
 export default App;
