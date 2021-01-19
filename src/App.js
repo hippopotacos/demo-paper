@@ -43,10 +43,11 @@ function App() {
               line-height: 1;
               letter-spacing: 0.48em;
               -ms-writing-mode: tb-rl;
+              -webkit-writing-mode: vertical-rl;
               writing-mode: vertical-rl;
+              -webkit-text-orientation: upright;
               text-orientation: upright;
               font-kerning: normal;
-              font-feature-settings: "palt";
               white-space: pre-line;
               font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
             }
@@ -94,7 +95,7 @@ function App() {
               <canvas id="canvas" width="600" height="460" />
             </div>
           </div>
-          <textarea className="textarea" placeholder="入力すると上に文字が出てきますよ" onChange={e => setText(e.target.value)} value={text}></textarea>
+          <textarea className="textarea" placeholder="入力すると上に文字が出てきます" onChange={e => setText(e.target.value)} value={text}></textarea>
         </div>
       </div>
     </div>
